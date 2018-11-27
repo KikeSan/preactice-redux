@@ -1,0 +1,39 @@
+.sec-articles {
+	width: 40%;
+	display: inline-block;
+	border-right: 1px solid #e8e8e8;
+}
+.ListArticles {
+	padding-left: 0;
+	li {
+		list-style: none;
+		margin: 0;
+		width: 400px;
+		position: relative;
+		padding: 10px;
+		&:hover {
+			background: #f7f7f7;
+		}
+		h3 {
+			margin: 5px 0;
+			font-size: 16px;
+		}
+		p {
+			margin: 0;
+			color: #8e8d8d;
+			font-size: 12px;
+		}
+		.actions {
+			position: absolute;
+			right: 10px;
+			top: 20px;
+			button {
+				//float: right;
+				display: inline-block;
+				height: 24px;
+				//width: 24px;
+				margin: 0 5px 0 0;
+			}
+		}
+	}
+}
