@@ -1,6 +1,17 @@
 import { ADD_ARTICLE, REMOVE_ARTICLE, EDIT_ARTICLE, CANCEL_MODAL, UPDATE_ARTICLE } from '../constants/action-types'
 const initialState = {
-	articles: [{ title: 'Cyberwow', fecha: '25/11/2018 16:40:16', id: '1' }, { title: 'Productos más vendidos', fecha: '26/11/2018 06:10:03', id: '2' }],
+	articles: [
+		{
+			title: 'Cyberwow',
+			fecha: '25/11/2018 16:40:16',
+			id: '1'
+		},
+		{
+			title: 'Productos más vendidos',
+			fecha: '26/11/2018 06:10:03',
+			id: '2'
+		}
+	],
 	modal: false
 }
 const rootReducer = (state = initialState, action) => {
