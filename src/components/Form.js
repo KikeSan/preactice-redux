@@ -4,7 +4,6 @@ import uuidv1 from 'uuid'
 import { addArticle } from '../actions/index'
 
 const mapDispatchToProps = dispatch => {
-	console.log('mapDispatchToProps--- ')
 	return {
 		addArticle: article => dispatch(addArticle(article))
 	}
@@ -31,12 +30,9 @@ class ConnectedForm extends Component {
 			fecha = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
 		this.props.addArticle({ title, fecha, id })
 		this.setState({ title: '' })
-		console.log('handleSubmit -> ', this.props)
 	}
 
 	render() {
-		//const { title } = this.state
-		console.log('render Form')
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div>

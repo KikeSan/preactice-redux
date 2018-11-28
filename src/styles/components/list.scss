@@ -3,6 +3,9 @@
 	display: inline-block;
 	border-right: 1px solid #e8e8e8;
 }
+.wrapperList {
+	position: relative;
+}
 .ListArticles {
 	padding-left: 0;
 	li {
@@ -34,6 +37,29 @@
 				//width: 24px;
 				margin: 0 5px 0 0;
 			}
+		}
+	}
+}
+.modal__bg {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.9);
+	.modal__wrapper {
+		width: 60%;
+		margin: 30px auto 0;
+		label {
+			margin-right: 10px;
+		}
+		input {
+			padding: 5px;
+			width: 60%;
+		}
+		button {
+			margin: 20px 0 0 30px;
+			width: 80px;
+			height: 30px;
 		}
 	}
 }

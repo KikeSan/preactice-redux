@@ -1,29 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { removeArticle } from '../actions/index'
+import { removeArticle, editArticle } from '../actions/index'
+import Modal from './Modal'
 
 const mapStateToProps = state => {
-	console.log('mapStateToProps', state)
 	return {
-		articles: state.articles
+		articles: state.articles,
+		modal: state.modal
 	}
 }
 const mapDispatchToProps = dispatch => {
 	return {
-		removeArticle: articleId => dispatch(removeArticle(articleId))
+		removeArticle: articleId => dispatch(removeArticle(articleId)),
+		editArticle: articleId => dispatch(editArticle(articleId))
 	}
 }
 
-/* const ConnectedList = ({ articles }) => (
-	<ul className="ListArticles">
-		{articles.map(el => (
-			<li key={el.id}>
-				{el.title}
-				<button onClick={this.handleRemove}>x</button>
-			</li>
-		))}
-	</ul>
-) */
 class ConnectedList extends Component {
 	constructor() {
 		super()
@@ -31,33 +23,35 @@ class ConnectedList extends Component {
 		this.handleEdit = this.handleEdit.bind(this)
 	}
 	handleRemove(e) {
-		//e.preventDefault()
+		e.preventDefault()
 		const idToClean = e.currentTarget.attributes['id-article'].value
-		console.log('handleRemove: ', e.currentTarget.attributes['id-article'].value)
-
 		this.props.removeArticle(idToClean)
 	}
 	handleEdit(e) {
-		console.log('handleRemove: ', e.currentTarget.attributes['id-article'].value)
+		const idToEdit = e.currentTarget.attributes['id-article'].value
+		this.props.editArticle(idToEdit)
 	}
 	render() {
 		return (
-			<ul className="ListArticles">
-				{this.props.articles.map(el => (
-					<li key={el.id}>
-						<h3>{el.title}</h3>
-						<p>{el.fecha}</p>
-						<div className="actions">
-							<button onClick={this.handleEdit} id-article={el.id}>
-								edit
-							</button>
-							<button onClick={this.handleRemove} id-article={el.id}>
-								x
-							</button>
-						</div>
-					</li>
-				))}
-			</ul>
+			<div className="wrapperList">
+				<ul className="ListArticles">
+					{this.props.articles.map(el => (
+						<li key={el.id}>
+							<h3>{el.title}</h3>
+							<p>{el.fecha}</p>
+							<div className="actions">
+								<button onClick={this.handleEdit} id-article={el.id}>
+									edit
+								</button>
+								<button onClick={this.handleRemove} id-article={el.id}>
+									x
+								</button>
+							</div>
+						</li>
+					))}
+				</ul>
+				{this.props.modal ? <Modal /> : <div />}
+			</div>
 		)
 	}
 }
